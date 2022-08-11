@@ -1,17 +1,20 @@
 public class CoffeeShop {
 
+    private String shopName;
     private int options;
     private double prices;
     private String coffee;
     private int size;
     public void coffeeShop(){
+        shopName = " ";
         options = 0;
         prices = 0.0;
         coffee = "";
         size = 0;
     }
 
-    public void coffeeShop(int o, double p, String coffee, int s){
+    public void coffeeShop(String nameOfShop, int o, double p, String coffee, int s){
+        shopName = nameOfShop;
         options = o;
         prices = p;
         this.coffee = coffee;
