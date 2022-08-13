@@ -2,13 +2,11 @@ public class CoffeeShop {
 
     private String shopName;
     private int options;
-    private double prices;
     private String coffee;
     private int size;
     public void coffeeShop(){
         shopName = " ";
         options = 0;
-        prices = 0.0;
         coffee = "";
         size = 0;
     }
@@ -22,10 +20,6 @@ public class CoffeeShop {
     }
     public void setOptions(int o){
         options = o;
-    }
-
-    public void setPrices(double p){
-        prices = p;
     }
 
     public void setCoffee(String coffee) {
