@@ -13,4 +13,6 @@ public class Choice{
     choicePrice = price;
     }
 
+    
+
 }

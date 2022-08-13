@@ -1,33 +1,20 @@
 public class CoffeeShop {
 
     private String shopName;
-    private int options;
-    private String coffee;
-    private int size;
+
+    private int shopOptions;
     public void coffeeShop(){
         shopName = " ";
         options = 0;
-        coffee = "";
-        size = 0;
+
     }
 
-    public void coffeeShop(String nameOfShop, int o, double p, String coffee, int s){
+    public void coffeeShop(String nameOfShop, int o){
         shopName = nameOfShop;
         options = o;
-        prices = p;
-        this.coffee = coffee;
-        size = s;
     }
     public void setOptions(int o){
         options = o;
-    }
-
-    public void setCoffee(String coffee) {
-        this.coffee = coffee;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 
     public int getOptions(){
