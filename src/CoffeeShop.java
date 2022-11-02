@@ -10,7 +10,7 @@ public class CoffeeShop implements ActionListener{
 
     JButton[] optionButtons = new JButton[15];
 
-    JButton espressoButton, icedCoffeeButton, hotCoffeeButton;
+    JButton espressoButton, icedCoffeeButton, hotCoffeeButton, cartButton;
 
     JButton coldBrewButton;
 
@@ -40,11 +40,14 @@ public class CoffeeShop implements ActionListener{
         panel.setLayout(new GridLayout(4,4,10,10));
 
         coldBrewButton = new JButton("Cold Brew");
+
         espressoButton = new JButton("Espresso");
         icedCoffeeButton = new JButton("Iced Coffee");
         hotCoffeeButton = new JButton("Hot Coffee");
 
+        cartButton = new JButton("Cart");
 
+        cartButton.setBounds(30, 60, 50, 50);
 
 
           optionButtons[0] = coldBrewButton;
@@ -60,6 +63,10 @@ public class CoffeeShop implements ActionListener{
           panel.add(espressoButton);
           panel.add(icedCoffeeButton);
           panel.add(hotCoffeeButton);
+          panel.add(cartButton);
+
+
+
 
         frame.add(panel);
 
@@ -76,6 +83,7 @@ public class CoffeeShop implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == coldBrewButton){
             textField.setText("Your total will be $3.77");
+            cartButton.setText("Cold Brew");
         }
         if(e.getSource() == espressoButton){
             textField.setText("Your total will be $2.13");
