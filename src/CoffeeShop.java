@@ -24,12 +24,16 @@ public class CoffeeShop implements ActionListener{
         frame = new JFrame("Welcome to Rob's");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        Label label = new Label();
+
+        label.setText("Your cart");
 
 
-        frame.setSize(420, 550);
+
+        frame.setSize(500, 700);
         frame.setLayout(null);
          textField = new JTextField();
-        textField.setBounds(50, 25, 300, 50);
+        textField.setBounds(70, 25, 350, 50);
         textField.setFont(myFont);
 
         //disables the user from typing in the text box
@@ -45,9 +49,7 @@ public class CoffeeShop implements ActionListener{
         icedCoffeeButton = new JButton("Iced Coffee");
         hotCoffeeButton = new JButton("Hot Coffee");
 
-        cartButton = new JButton("Cart");
 
-        cartButton.setBounds(30, 60, 50, 50);
 
 
           optionButtons[0] = coldBrewButton;
@@ -63,7 +65,6 @@ public class CoffeeShop implements ActionListener{
           panel.add(espressoButton);
           panel.add(icedCoffeeButton);
           panel.add(hotCoffeeButton);
-          panel.add(cartButton);
 
 
 
@@ -83,16 +84,16 @@ public class CoffeeShop implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == coldBrewButton){
             textField.setText("Your total will be $3.77");
-            cartButton.setText("Cold Brew");
         }
-        if(e.getSource() == espressoButton){
+        else if(e.getSource() == espressoButton){
             textField.setText("Your total will be $2.13");
         }
-        if(e.getSource() == icedCoffeeButton){
+        else if(e.getSource() == icedCoffeeButton){
             textField.setText("Your total will be $3.07");
         }
-        if(e.getSource() == hotCoffeeButton){
+        else if(e.getSource() == hotCoffeeButton){
             textField.setText("Your total will be $2.88");
         }
+
     }
 }
