@@ -10,28 +10,29 @@ public class CoffeeShop implements ActionListener{
 
     JButton[] optionButtons = new JButton[15];
 
-    JButton espressoButton, icedCoffeeButton, hotCoffeeButton, cartButton;
+    JButton espressoButton, icedCoffeeButton, hotCoffeeButton;
 
     JButton coldBrewButton;
 
     JPanel panel;
 
+    JLabel label;
+
     Font myFont = new Font("Ink Free", Font.BOLD, 21);
 
 
-      CoffeeShop(){
+      CoffeeShop(String name){
 
-        frame = new JFrame("Welcome to Rob's");
+
+        JFrame frame = new JFrame("Welcome to " + name + "'s CoffeeShop");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        Label label = new Label();
-
-        label.setText("Your cart");
+        frame.setSize(500, 500);
 
 
+                
+                
 
-        frame.setSize(500, 700);
-        frame.setLayout(null);
+
          textField = new JTextField();
         textField.setBounds(70, 25, 350, 50);
         textField.setFont(myFont);
@@ -65,11 +66,12 @@ public class CoffeeShop implements ActionListener{
           panel.add(espressoButton);
           panel.add(icedCoffeeButton);
           panel.add(hotCoffeeButton);
-
-
+          
 
 
         frame.add(panel);
+
+        
 
         frame.add(textField);
 
@@ -77,22 +79,26 @@ public class CoffeeShop implements ActionListener{
     }
 
     public static void main(String[] args) {
-        CoffeeShop robs = new CoffeeShop();
+        CoffeeShop robs = new CoffeeShop("Rob");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == coldBrewButton){
             textField.setText("Your total will be $3.77");
+            label.setText(label.getText() + " Cold Brew");
         }
         else if(e.getSource() == espressoButton){
             textField.setText("Your total will be $2.13");
+            label.setText(label.getText() + " Espresso");
         }
         else if(e.getSource() == icedCoffeeButton){
             textField.setText("Your total will be $3.07");
+            label.setText(label.getText() + " Iced Coffee");
         }
         else if(e.getSource() == hotCoffeeButton){
             textField.setText("Your total will be $2.88");
+            label.setText(label.getText() + " Hot Coffee");
         }
 
     }
