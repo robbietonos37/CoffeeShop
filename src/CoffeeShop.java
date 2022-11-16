@@ -6,7 +6,7 @@ public class CoffeeShop implements ActionListener{
 
     JFrame frame;
 
-    JTextField textField = new JTextField();
+    JTextField textField;
 
     JButton[] optionButtons = new JButton[15];
 
@@ -16,6 +16,8 @@ public class CoffeeShop implements ActionListener{
 
     JPanel panel;
 
+    JTextArea field2;
+
     JLabel label;
 
     Font myFont = new Font("Ink Free", Font.BOLD, 21);
@@ -23,57 +25,57 @@ public class CoffeeShop implements ActionListener{
 
       CoffeeShop(String name){
 
-
+        //Create Frame(Biggest Window)
         JFrame frame = new JFrame("Welcome to " + name + "'s CoffeeShop");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(800, 800);
 
-
-                
-                
-
-
-         textField = new JTextField();
+        //Create Text Field To Hold Price Totals
+        textField = new JTextField();
         textField.setBounds(70, 25, 350, 50);
         textField.setFont(myFont);
 
-        //disables the user from typing in the text box
+        //Disables the user from typing in the text box
         textField.setEditable(false);
 
+        //Creates A Panel that will hold the buttons in the options
         panel = new JPanel();
-        panel.setBounds(50, 100, 300, 300);
+        panel.setBounds(50, 100, 200, 200);
         panel.setLayout(new GridLayout(4,4,10,10));
 
+        //Creating buttons for our coffee options
         coldBrewButton = new JButton("Cold Brew");
-
         espressoButton = new JButton("Espresso");
         icedCoffeeButton = new JButton("Iced Coffee");
         hotCoffeeButton = new JButton("Hot Coffee");
 
-
-
-
-          optionButtons[0] = coldBrewButton;
+        optionButtons[0] = coldBrewButton;
 
         coldBrewButton.addActionListener(this);
-          espressoButton.addActionListener(this);
+        espressoButton.addActionListener(this);
+        icedCoffeeButton.addActionListener(this);
+        hotCoffeeButton.addActionListener(this);
 
-          icedCoffeeButton.addActionListener(this);
-
-          hotCoffeeButton.addActionListener(this);
-
+          //Add our coffee options onto our panel
           panel.add(coldBrewButton);
           panel.add(espressoButton);
           panel.add(icedCoffeeButton);
           panel.add(hotCoffeeButton);
-          
+
+          field2 = new JTextArea();
+
+          field2.setBounds(450, 450, 300, 300);
+          field2.setFont(myFont);
+          field2.setText("Cart");
+          field2.setEditable(false);
+          field2.setLineWrap(false);
+
 
 
         frame.add(panel);
-
-        
-
         frame.add(textField);
+        frame.add(field2, BorderLayout.EAST);
+
 
         frame.setVisible(true);
     }
@@ -86,19 +88,19 @@ public class CoffeeShop implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == coldBrewButton){
             textField.setText("Your total will be $3.77");
-            label.setText(label.getText() + " Cold Brew");
+            field2.setText("\n" + field2.getText() + " Cold Brew");
         }
         else if(e.getSource() == espressoButton){
             textField.setText("Your total will be $2.13");
-            label.setText(label.getText() + " Espresso");
+            field2.setText("\n" + field2.getText() + " Espresso");
         }
         else if(e.getSource() == icedCoffeeButton){
             textField.setText("Your total will be $3.07");
-            label.setText(label.getText() + " Iced Coffee");
+            field2.setText("\n" + field2.getText() + " Iced Coffee");
         }
         else if(e.getSource() == hotCoffeeButton){
             textField.setText("Your total will be $2.88");
-            label.setText(label.getText() + " Hot Coffee");
+            field2.setText("\n" + field2.getText() + " Hot Coffee");
         }
 
     }
