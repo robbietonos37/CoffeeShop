@@ -6,17 +6,17 @@ public class CoffeeShop implements ActionListener{
 
     JFrame frame;
 
-    JTextField textField;
+    JTextField textField, textfield2, coldbrewTextfield;
 
     JButton[] optionButtons = new JButton[15];
 
-    JButton espressoButton, icedCoffeeButton, hotCoffeeButton;
-
-    JButton coldBrewButton;
+    JButton espressoButton, icedCoffeeButton, hotCoffeeButton, coldBrewButton;
 
     JPanel panel;
 
-    double price;
+    double price, coldBrewPrice, espressoPrice, icedCoffeePrice, hotCoffeePrice;
+
+    int caffeineCount, coldBrewCaffeine, espressoCaffeine, icedCoffeeCaffeine, hotCoffeeCaffeine;
 
 
     Font myFont = new Font("Ink Free", Font.BOLD, 21);
@@ -27,7 +27,7 @@ public class CoffeeShop implements ActionListener{
         //Create Frame(Biggest Window)
         JFrame frame = new JFrame("Welcome to " + name + "'s CoffeeShop");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(1000, 1000);
         frame.setLayout(null);
 
         //Create Text Field To Hold Price Totals
@@ -39,10 +39,23 @@ public class CoffeeShop implements ActionListener{
         //Disables the user from typing in the text box
         textField.setEditable(false);
 
+        //Create text field to hold caffeine count
+          textfield2 = new JTextField();
+          textfield2.setBounds(550, 25, 450, 50);
+          textfield2.setFont(myFont);
+          textfield2.setEditable(false);
+
         //Creates A Panel that will hold the buttons in the options
           panel = new JPanel();
-          panel.setBounds(50, 100, 300, 300);
+          panel.setBounds(50, 100, 200, 200);
           panel.setLayout(new GridLayout(4,4,10,10));
+
+          //Create textfields to keep up with quantity of each item
+          coldbrewTextfield = new JTextField();
+          coldbrewTextfield.setBounds(270, 85, 120, 60);
+          coldbrewTextfield.setFont(myFont);
+          coldbrewTextfield.setEditable(false);
+          coldbrewTextfield.setText("hey");
 
         //Creating buttons for our coffee options
         coldBrewButton = new JButton("Cold Brew");
@@ -57,6 +70,17 @@ public class CoffeeShop implements ActionListener{
         icedCoffeeButton.addActionListener(this);
         hotCoffeeButton.addActionListener(this);
 
+        coldBrewPrice = 3.25;
+        espressoPrice = 2.77;
+        icedCoffeePrice = 3.15;
+        hotCoffeePrice = 2.85;
+
+        coldBrewCaffeine = 255;
+        espressoCaffeine = 115;
+        icedCoffeeCaffeine = 85;
+        hotCoffeeCaffeine = 90;
+
+
           //Add our coffee options onto our panel
           panel.add(coldBrewButton);
           panel.add(espressoButton);
@@ -69,6 +93,8 @@ public class CoffeeShop implements ActionListener{
 
         frame.add(panel);
         frame.add(textField);
+        frame.add(textfield2);
+        frame.add(coldbrewTextfield);
 
 
         frame.setVisible(true);
@@ -78,6 +104,10 @@ public class CoffeeShop implements ActionListener{
           price += newPrice;
     }
 
+    public void setCaffeineCount(int caffeine){
+          caffeineCount += caffeine;
+    }
+
     public static void main(String[] args) {
         CoffeeShop robs = new CoffeeShop("Rob");
     }
@@ -85,21 +115,28 @@ public class CoffeeShop implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == coldBrewButton){
-            this.setPrice(2);
-            textField.setText("Your total will be $" + price);
-            //field2.append("\nCold Brew");
+            this.setPrice(coldBrewPrice);
+            this.setCaffeineCount(coldBrewCaffeine);
+            textField.setText("Your total will be $" + String.format("%.2f", price));
+            textfield2.setText("Caffeine count: " + caffeineCount + "mg");
         }
         else if(e.getSource() == espressoButton){
-            textField.setText("Your total will be $2.13");
-            //field2.append("\nEspresso");
+            this.setPrice(espressoPrice);
+            this.setCaffeineCount(espressoCaffeine);
+            textField.setText("Your total will be $" + String.format("%.2f", price));
+            textfield2.setText("Caffeine count: " + caffeineCount + "mg");
         }
         else if(e.getSource() == icedCoffeeButton){
-            textField.setText("Your total will be $3.07");
-            //field2.append("\nIced Coffee");
+            this.setPrice(icedCoffeePrice);
+            this.setCaffeineCount(icedCoffeeCaffeine);
+            textField.setText("Your total will be $" + String.format("%.2f", price));
+            textfield2.setText("Caffeine count: " + caffeineCount + "mg");
         }
         else if(e.getSource() == hotCoffeeButton){
-            textField.setText("Your total will be $2.88");
-            //field2.append("Hot Coffee");
+            this.setPrice(hotCoffeePrice);
+            this.setCaffeineCount(hotCoffeeCaffeine);
+            textField.setText("Your total will be $" + String.format("%.2f", price));
+            textfield2.setText("Caffeine count: " + caffeineCount + "mg");
         }
 
     }
