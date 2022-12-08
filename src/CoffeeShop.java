@@ -59,7 +59,7 @@ public class CoffeeShop implements ActionListener{
           coldbrewTextfield.setEditable(false);
 
           espressoTextfield = new JTextField();
-          espressoTextfield.setBounds(270, 125, 90, 40);
+          espressoTextfield.setBounds(270, 150, 90, 40);
           espressoTextfield.setFont(myFont);
           espressoTextfield.setEditable(false);
 
@@ -102,6 +102,7 @@ public class CoffeeShop implements ActionListener{
         frame.add(textField);
         frame.add(textfield2);
         frame.add(coldbrewTextfield);
+        frame.add(espressoTextfield);
 
 
         frame.setVisible(true);
@@ -134,6 +135,8 @@ public class CoffeeShop implements ActionListener{
             this.setCaffeineCount(espressoCaffeine);
             textField.setText("Your total will be $" + String.format("%.2f", price));
             textfield2.setText("Caffeine count: " + caffeineCount + "mg");
+            espressoCount++;
+            espressoTextfield.setText("" + espressoCount);
         }
         else if(e.getSource() == icedCoffeeButton){
             this.setPrice(icedCoffeePrice);
