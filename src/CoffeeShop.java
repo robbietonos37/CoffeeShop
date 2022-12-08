@@ -6,7 +6,7 @@ public class CoffeeShop implements ActionListener{
 
     JFrame frame;
 
-    JTextField textField, textfield2, coldbrewTextfield;
+    JTextField textField, textfield2, coldbrewTextfield, espressoTextfield, icedCoffeefield, hotCoffeeTextfield;
 
     JButton[] optionButtons = new JButton[15];
 
@@ -17,6 +17,8 @@ public class CoffeeShop implements ActionListener{
     double price, coldBrewPrice, espressoPrice, icedCoffeePrice, hotCoffeePrice;
 
     int caffeineCount, coldBrewCaffeine, espressoCaffeine, icedCoffeeCaffeine, hotCoffeeCaffeine;
+
+    int coldBrewCount, espressoCount, icedCoffeeCount, hotCoffeeCount;
 
 
     Font myFont = new Font("Ink Free", Font.BOLD, 21);
@@ -52,10 +54,14 @@ public class CoffeeShop implements ActionListener{
 
           //Create textfields to keep up with quantity of each item
           coldbrewTextfield = new JTextField();
-          coldbrewTextfield.setBounds(270, 85, 120, 60);
+          coldbrewTextfield.setBounds(270, 100, 90, 40);
           coldbrewTextfield.setFont(myFont);
           coldbrewTextfield.setEditable(false);
-          coldbrewTextfield.setText("hey");
+
+          espressoTextfield = new JTextField();
+          espressoTextfield.setBounds(270, 125, 90, 40);
+          espressoTextfield.setFont(myFont);
+          espressoTextfield.setEditable(false);
 
         //Creating buttons for our coffee options
         coldBrewButton = new JButton("Cold Brew");
@@ -80,6 +86,10 @@ public class CoffeeShop implements ActionListener{
         icedCoffeeCaffeine = 85;
         hotCoffeeCaffeine = 90;
 
+        coldBrewCount = 0;
+        espressoCount = 0;
+        icedCoffeeCount = 0;
+        hotCoffeeCount = 0;
 
           //Add our coffee options onto our panel
           panel.add(coldBrewButton);
@@ -87,10 +97,7 @@ public class CoffeeShop implements ActionListener{
           panel.add(icedCoffeeButton);
           panel.add(hotCoffeeButton);
 
-
-
-
-
+        //Adding the panel with the buttons, all textfields to the frame so they actually appear
         frame.add(panel);
         frame.add(textField);
         frame.add(textfield2);
@@ -119,6 +126,8 @@ public class CoffeeShop implements ActionListener{
             this.setCaffeineCount(coldBrewCaffeine);
             textField.setText("Your total will be $" + String.format("%.2f", price));
             textfield2.setText("Caffeine count: " + caffeineCount + "mg");
+            coldBrewCount++;
+            coldbrewTextfield.setText("" + coldBrewCount);
         }
         else if(e.getSource() == espressoButton){
             this.setPrice(espressoPrice);
