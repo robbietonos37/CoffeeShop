@@ -54,14 +54,24 @@ public class CoffeeShop implements ActionListener{
 
           //Create textfields to keep up with quantity of each item
           coldbrewTextfield = new JTextField();
-          coldbrewTextfield.setBounds(270, 100, 90, 40);
+          coldbrewTextfield.setBounds(270, 105, 90, 40);
           coldbrewTextfield.setFont(myFont);
           coldbrewTextfield.setEditable(false);
 
           espressoTextfield = new JTextField();
-          espressoTextfield.setBounds(270, 150, 90, 40);
+          espressoTextfield.setBounds(270, 155, 90, 40);
           espressoTextfield.setFont(myFont);
           espressoTextfield.setEditable(false);
+
+          icedCoffeefield = new JTextField();
+          icedCoffeefield.setBounds(270, 205, 90, 40);
+          icedCoffeefield.setFont(myFont);
+          icedCoffeefield.setEditable(false);
+
+          hotCoffeeTextfield = new JTextField();
+          hotCoffeeTextfield.setBounds(270, 255, 90, 40);
+          hotCoffeeTextfield.setFont(myFont);
+          hotCoffeeTextfield.setEditable(false);
 
         //Creating buttons for our coffee options
         coldBrewButton = new JButton("Cold Brew");
@@ -103,6 +113,8 @@ public class CoffeeShop implements ActionListener{
         frame.add(textfield2);
         frame.add(coldbrewTextfield);
         frame.add(espressoTextfield);
+        frame.add(icedCoffeefield);
+        frame.add(hotCoffeeTextfield);
 
 
         frame.setVisible(true);
@@ -143,12 +155,16 @@ public class CoffeeShop implements ActionListener{
             this.setCaffeineCount(icedCoffeeCaffeine);
             textField.setText("Your total will be $" + String.format("%.2f", price));
             textfield2.setText("Caffeine count: " + caffeineCount + "mg");
+            icedCoffeeCount++;
+            icedCoffeefield.setText("" + icedCoffeeCount);
         }
         else if(e.getSource() == hotCoffeeButton){
             this.setPrice(hotCoffeePrice);
             this.setCaffeineCount(hotCoffeeCaffeine);
             textField.setText("Your total will be $" + String.format("%.2f", price));
             textfield2.setText("Caffeine count: " + caffeineCount + "mg");
+            hotCoffeeCount++;
+            hotCoffeeTextfield.setText("" + hotCoffeeCount);
         }
 
     }
