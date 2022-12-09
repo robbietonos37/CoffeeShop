@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Stack;
 
 public class CoffeeShop implements ActionListener{
 
     JFrame frame;
 
     JTextField textField, textfield2, coldbrewTextfield, espressoTextfield, icedCoffeefield, hotCoffeeTextfield;
-
-    JButton[] optionButtons = new JButton[15];
 
     JButton espressoButton, icedCoffeeButton, hotCoffeeButton, coldBrewButton;
 
@@ -19,6 +18,8 @@ public class CoffeeShop implements ActionListener{
     int caffeineCount, coldBrewCaffeine, espressoCaffeine, icedCoffeeCaffeine, hotCoffeeCaffeine;
 
     int coldBrewCount, espressoCount, icedCoffeeCount, hotCoffeeCount;
+
+    Stack<String> order = new Stack<>();
 
 
     Font myFont = new Font("Ink Free", Font.BOLD, 21);
@@ -79,8 +80,6 @@ public class CoffeeShop implements ActionListener{
         icedCoffeeButton = new JButton("Iced Coffee");
         hotCoffeeButton = new JButton("Hot Coffee");
 
-        optionButtons[0] = coldBrewButton;
-
         coldBrewButton.addActionListener(this);
         espressoButton.addActionListener(this);
         icedCoffeeButton.addActionListener(this);
@@ -116,6 +115,8 @@ public class CoffeeShop implements ActionListener{
         frame.add(icedCoffeefield);
         frame.add(hotCoffeeTextfield);
 
+        order = new Stack<>();
+
 
         frame.setVisible(true);
     }
@@ -141,6 +142,8 @@ public class CoffeeShop implements ActionListener{
             textfield2.setText("Caffeine count: " + caffeineCount + "mg");
             coldBrewCount++;
             coldbrewTextfield.setText("" + coldBrewCount);
+            order.push("Cold Brew");
+            System.out.println(order.peek());
         }
         else if(e.getSource() == espressoButton){
             this.setPrice(espressoPrice);
